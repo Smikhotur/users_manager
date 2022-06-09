@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkusers_manager=self.webpackChunkusers_manager||[]).push([[716],{4716:function(e,n,r){r.r(n);r(2791);var s=r(184);n.default=function(){return(0,s.jsx)("div",{children:(0,s.jsx)("div",{children:"Hello from Contacts"})})}}}]);
+//# sourceMappingURL=716.6f11e22a.chunk.js.map

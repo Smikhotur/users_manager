@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkusers_manager=self.webpackChunkusers_manager||[]).push([[558],{9558:function(e,r,s){s.r(r);s(2791);var n=s(184);r.default=function(){return(0,n.jsx)("div",{children:(0,n.jsx)("div",{children:"Hello from AboutUs"})})}}}]);
+//# sourceMappingURL=558.c39dff7f.chunk.js.map
