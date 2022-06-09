@@ -10,11 +10,9 @@ export const Routes: React.FC = () => (
     <Header />
     <S.Main>
       <Switch>
-        <Route path='/'>
-          {routeConfig.map((route, index) => (
-            <Route {...route} key={index} />
-          ))}
-        </Route>
+        {routeConfig.map((route, index) => (
+          <Route {...route} key={index} />
+        ))}
         <Redirect to='/' />
       </Switch>
     </S.Main>
