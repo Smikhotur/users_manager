@@ -19,7 +19,12 @@ export const Header: React.FC = () => {
   return (
     <S.Header>
       <S.LogoWrapper>
-        <S.LinkImg to='/'>
+        <S.LinkImg
+          onClick={() => {
+            setActive('/');
+          }}
+          to='/'
+        >
           <S.Logo src={logo} />
         </S.LinkImg>
         <S.LogoText>Manager</S.LogoText>
