@@ -46,6 +46,11 @@ S.EditBtn = styled.button`
 
 S.MainContent = styled.div`
   display: flex;
+
+  @media (max-width: 568px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 S.AvatarInner = styled.div`

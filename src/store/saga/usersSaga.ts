@@ -10,78 +10,54 @@ import {
   removeUserFeatch,
   setUserPostFeatch,
 } from '../reducers/UserSlice';
+import { UserApi } from '../../services/async-api-users';
+import { IUsers } from '../../interface';
 import {
-  editUserAPI,
-  getUserAPI,
-  getUsersAPI,
-  postUserAPI,
-  removeUserAPI,
-} from '../../services/async-api-users';
-import { ICreateUser } from '../../interface';
+  IPayloadStrinOrNumber,
+  IWorkerEditUserFetch,
+  IWorkerPostUserFetch,
+} from '../actionTypes/actionTypes';
 
-function* workerGetUsersFetch(): any {
-  const respons = yield call(getUsersAPI);
-
-  if (respons.status === 200) {
-    yield put(getUsersSuccess(respons.data));
-  } else {
-    yield put(getUsersFailure(respons.message));
+function* workerGetUsersFetch() {
+  try {
+    const data: IUsers[] = yield call(UserApi.getUsers);
+    yield put(getUsersSuccess(data));
+  } catch (error) {
+    yield put(getUsersFailure(error));
   }
 }
 
-function* workerPostUserFetch(actions: {
-  payload: ICreateUser;
-  type: string;
-}): any {
-  const respons = yield call(postUserAPI, actions.payload);
-  if (respons.status === 200) {
-    yield put(getUsersSuccess(respons.data));
-  } else {
-    yield put(getUsersFailure(respons.message));
+function* workerPostUserFetch({ payload }: IWorkerPostUserFetch) {
+  try {
+    yield call(UserApi.postUser, payload);
+  } catch (error) {
+    yield put(getUsersFailure(error));
   }
 }
 
-function* workerRemoveUserFetch(actions: {
-  payload: { id: number };
-  type: string;
-}): any {
-  //@ts-ignore
-  const respons = yield call(removeUserAPI, actions.payload.id);
-
-  // if (respons.status === 200) {
-  //   yield put(getUsersSuccess(respons.data));
-  // } else {
-  //   yield put(getUsersFailure(respons.message));
-  // }
-}
-
-function* workerEditUserFetch(actions: {
-  payload: { id: number; data: ICreateUser };
-  type: string;
-}): any {
-  console.log(actions);
-  const respons = yield call(
-    //@ts-ignore
-    editUserAPI,
-    actions.payload.id,
-    actions.payload.data
-  );
-  if (respons.status === 200) {
-    yield put(getUsersSuccess(respons.data));
-  } else {
-    yield put(getUsersFailure(respons.message));
+function* workerRemoveUserFetch({ payload }: IPayloadStrinOrNumber) {
+  try {
+    yield call(UserApi.removeUser, payload.id);
+  } catch (error) {
+    yield put(getUsersFailure(error));
   }
 }
 
-function* workerGetUserFetch(actions: {
-  payload: { id: number };
-  type: string;
-}): any {
-  const respons = yield call(getUserAPI, actions.payload.id);
-  if (respons.status === 200) {
-    yield put(getUserSuccess(respons.data));
-  } else {
-    yield put(getUsersFailure(respons.message));
+function* workerEditUserFetch({ payload }: IWorkerEditUserFetch) {
+  try {
+    yield call(UserApi.editUser, payload.id, payload.data);
+    // yield put(getUserSuccess(payload.data));
+  } catch (error) {
+    yield put(getUsersFailure(error));
+  }
+}
+
+function* workerGetUserFetch({ payload }: IPayloadStrinOrNumber) {
+  try {
+    const data: IUsers = yield call(UserApi.getUser, payload.id);
+    yield put(getUserSuccess(data));
+  } catch (error) {
+    yield put(getUsersFailure(error));
   }
 }
 

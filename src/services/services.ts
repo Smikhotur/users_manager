@@ -8,27 +8,19 @@ const client = axios.create({
 
 class service {
   get(api: string) {
-    return client.get(api).catch(function (error) {
-      return error.toJSON();
-    });
+    return client.get(api);
   }
 
   post(api: string, data: {} | string) {
-    return client.post(api, data).catch(function (error) {
-      return error.toJSON();
-    });
+    return client.post(api, data);
   }
 
   put(api: string, data: {} | string) {
-    return client.put(api, data).catch(function (error) {
-      return error.toJSON();
-    });
+    return client.put(api, data);
   }
 
   delete(api: string) {
-    return client.delete(api).catch(function (error) {
-      return error.toJSON();
-    });
+    return client.delete(api);
   }
 }
 

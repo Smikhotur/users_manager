@@ -7,6 +7,7 @@ export interface PropsFormAddUser {
 }
 
 export const FormAddUser: React.FC<PropsFormAddUser> = ({ formik }) => {
+  console.log(formik);
   return (
     <S.FormWrapper>
       <S.Form onSubmit={formik.handleSubmit}>
@@ -19,7 +20,7 @@ export const FormAddUser: React.FC<PropsFormAddUser> = ({ formik }) => {
             placeholder='Name'
             type='text'
           />
-          {formik.errors.name ? <ErrorMsg msg={formik.errors.name} /> : null}
+          {formik.errors.name ? <ErrorMsg msg={formik.errors.name} /> : ''}
         </label>
         <label htmlFor=''>
           <S.FormInput
@@ -31,7 +32,9 @@ export const FormAddUser: React.FC<PropsFormAddUser> = ({ formik }) => {
           />
           {formik.errors.surname ? (
             <ErrorMsg msg={formik.errors.surname} />
-          ) : null}
+          ) : (
+            ''
+          )}
         </label>
         <label htmlFor=''>
           <S.FormTextarea
@@ -40,7 +43,7 @@ export const FormAddUser: React.FC<PropsFormAddUser> = ({ formik }) => {
             name='desc'
             placeholder='Write something about the user 😀'
           />
-          {formik.errors.desc ? <ErrorMsg msg={formik.errors.desc} /> : null}
+          {formik.errors.desc ? <ErrorMsg msg={formik.errors.desc} /> : ''}
         </label>
         <S.FormButton type='submit'>add user</S.FormButton>
       </S.Form>

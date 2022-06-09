@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { StyledComponent } from 'styled-components';
 import { EColors } from '../ENUM/Enum';
 
 interface IElementsShopPage {
@@ -16,6 +16,7 @@ S.Wrapper = styled.div`
   min-height: 100vh;
   margin: 0 auto;
   max-width: 1330px;
+  min-width: 320px;
   width: 100%;
   background-color: ${EColors.mainBackground};
 `;

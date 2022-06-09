@@ -3,12 +3,12 @@ import { createRoot } from 'react-dom/client';
 import { App } from './App';
 import { Provider } from 'react-redux';
 import { setupStore } from './store/store';
-import createSagaMiddleware from 'redux-saga';
+import createSagaMiddleware, { SagaMiddleware } from 'redux-saga';
 import rootSaga from './store/sagas';
-import { HashRouter } from 'react-router-dom';
 import { GlobalStyles } from './GlobalSyles';
+import { HashRouter } from 'react-router-dom';
 
-const sagaMiddleware = createSagaMiddleware();
+const sagaMiddleware: SagaMiddleware<{}> = createSagaMiddleware();
 const container = document.getElementById('root')!;
 const root = createRoot(container);
 const store = setupStore(sagaMiddleware);

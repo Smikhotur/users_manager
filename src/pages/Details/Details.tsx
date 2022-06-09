@@ -15,7 +15,6 @@ const Details: React.FC = () => {
   const user = useAppSelector<IUsers>(selectorUser);
   const dispatch = useAppDispatch();
   const { params } = useRouteMatch();
-  console.log(user);
 
   useEffect(() => {
     dispatch(getUserFeatch(params));
@@ -27,8 +26,9 @@ const Details: React.FC = () => {
     desc: user.desc,
   };
 
-  const handleSubmitAddUser = async (data: ICreateUser): Promise<any> => {
+  const handleSubmitAddUser = (data: ICreateUser) => {
     dispatch(editUserFeatch({ ...params, data }));
+    setOpenModal(false);
   };
 
   return (

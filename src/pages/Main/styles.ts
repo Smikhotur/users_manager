@@ -21,9 +21,14 @@ S.BoxTitle = styled.div`
 S.Title = styled.h1`
   letter-spacing: 2px;
   font-size: 24px;
+  align-self: center;
 
   &::first-letter {
     text-transform: uppercase;
+  }
+
+  @media (max-width: 568px) {
+    font-size: 20px;
   }
 `;
 

@@ -1,12 +1,13 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import userReducer from './reducers/UserSlice';
 import logger from 'redux-logger';
+import { SagaMiddleware } from 'redux-saga';
 
 const rootReducer = combineReducers({
   user: userReducer,
 });
 
-export const setupStore = (sagaMiddleware: any) => {
+export const setupStore = (sagaMiddleware: SagaMiddleware<{}>) => {
   return configureStore({
     reducer: rootReducer,
     middleware: [sagaMiddleware, logger],

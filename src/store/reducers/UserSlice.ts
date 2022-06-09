@@ -6,6 +6,7 @@ export interface UserState {
   user: {};
   isLoading: boolean;
   error: string;
+  message: string;
 }
 
 const initialState: UserState = {
@@ -13,6 +14,7 @@ const initialState: UserState = {
   user: {},
   isLoading: false,
   error: '',
+  message: '',
 };
 
 export const userSlice = createSlice({
@@ -31,8 +33,12 @@ export const userSlice = createSlice({
       state.error = actions.payload;
     },
     setUserPostFeatch: (state, actions) => {},
-    removeUserFeatch: (state, actions) => {},
-    editUserFeatch: (state, actions) => {},
+    removeUserFeatch: (state, actions) => {
+      state.message = actions.payload;
+    },
+    editUserFeatch: (state, actions) => {
+      state.user = Object.assign(state.user, actions.payload);
+    },
     getUserFeatch: (state, actions) => {
       state.isLoading = true;
     },

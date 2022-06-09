@@ -1,32 +1,27 @@
 import { EApi } from '../ENUM/Enum';
 import { ICreateUser, IUsers } from '../interface';
+import { StrinOrNumber } from '../store/actionTypes/actionTypes';
 import services from './services';
 
-export const getUsersAPI = async (): Promise<IUsers[]> => {
-  const promise: any = await services.get(EApi.users);
-  return promise;
-};
-
-export const getUserAPI = async (id: number): Promise<IUsers> => {
-  const promise: any = await services.get(`${EApi.user}/${id}`);
-  return promise;
-};
-
-export const postUserAPI = async (data: ICreateUser): Promise<{}> => {
-  const promise: any = await services.post(EApi.users, data);
-  return promise;
-};
-
-export const removeUserAPI = async (id: string) => {
-  const promise: any = await services.delete(`${EApi.user}/${id}`);
-  return promise;
-};
-
-export const editUserAPI = async (
-  id: string,
-  data: ICreateUser
-): Promise<any> => {
-  console.log(id, data);
-  const promise: any = await services.put(`${EApi.user}/${id}`, data);
-  return promise;
+export const UserApi = {
+  async getUsers(): Promise<IUsers[]> {
+    const { data } = await services.get(EApi.users);
+    return data;
+  },
+  async getUser(id: StrinOrNumber): Promise<IUsers> {
+    const { data } = await services.get(`${EApi.user}/${id}`);
+    return data;
+  },
+  async postUser(body: ICreateUser): Promise<IUsers> {
+    const { data } = await services.post(EApi.users, body);
+    return data;
+  },
+  async removeUser(id: StrinOrNumber): Promise<IUsers> {
+    const { data } = await services.delete(`${EApi.user}/${id}`);
+    return data;
+  },
+  async editUser(id: StrinOrNumber, body: ICreateUser): Promise<any> {
+    const { data } = await services.put(`${EApi.user}/${id}`, body);
+    return data;
+  },
 };

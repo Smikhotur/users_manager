@@ -30,8 +30,9 @@ const Main: React.FC = () => {
     desc: '',
   };
 
-  const handleSubmitAddUser = async (data: ICreateUser): Promise<any> => {
+  const handleSubmitAddUser = (data: ICreateUser) => {
     dispatch(setUserPostFeatch(data));
+    setOpenModul(!openModul);
   };
 
   return (

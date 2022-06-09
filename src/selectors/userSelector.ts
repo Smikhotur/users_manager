@@ -1,4 +1,3 @@
-import { UserState } from '../store/reducers/UserSlice';
 import { RootState } from '../store/store';
 
 export const selectorIsLouder = (state: RootState) => {
