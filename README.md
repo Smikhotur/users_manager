@@ -1,6 +1,6 @@
 ## Users manager
 
--  [DEMO LINK](https://Smikhotur.github.io/game__2048)
+-  [DEMO LINK](https://Smikhotur.github.io/users_manager)
 
 ## Instructions
 1. **Fork** the repo.

@@ -45,6 +45,7 @@ function* workerRemoveUserFetch(actions: {
   payload: { id: number };
   type: string;
 }): any {
+  //@ts-ignore
   const respons = yield call(removeUserAPI, actions.payload.id);
 
   // if (respons.status === 200) {
@@ -60,6 +61,7 @@ function* workerEditUserFetch(actions: {
 }): any {
   console.log(actions);
   const respons = yield call(
+    //@ts-ignore
     editUserAPI,
     actions.payload.id,
     actions.payload.data
