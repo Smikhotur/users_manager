@@ -5,23 +5,23 @@ import services from './services';
 
 export const UserApi = {
   async getUsers(): Promise<IUsers[]> {
-    const { data } = await services.get(EApi.users);
+    const { data } = await services.get(EApi.USERS);
     return data;
   },
   async getUser(id: StrinOrNumber): Promise<IUsers> {
-    const { data } = await services.get(`${EApi.user}/${id}`);
+    const { data } = await services.get(`${EApi.USERS}/${id}`);
     return data;
   },
   async postUser(body: ICreateUser): Promise<IUsers> {
-    const { data } = await services.post(EApi.users, body);
+    const { data } = await services.post(EApi.USER, body);
     return data;
   },
-  async removeUser(id: StrinOrNumber): Promise<IUsers> {
-    const { data } = await services.delete(`${EApi.user}/${id}`);
+  async removeUser(payload: string | number): Promise<IUsers> {
+    const { data } = await services.delete(`${EApi.USER}/${payload}`);
     return data;
   },
   async editUser(id: StrinOrNumber, body: ICreateUser): Promise<any> {
-    const { data } = await services.put(`${EApi.user}/${id}`, body);
+    const { data } = await services.put(`${EApi.USER_UPDATE}/${id}`, body);
     return data;
   },
 };

@@ -17,6 +17,11 @@ export interface IPayloadStrinOrNumber {
   };
 }
 
+export interface IPayload {
+  type: string;
+  payload: StrinOrNumber;
+}
+
 export interface IWorkerPostUserFetch {
   type: string;
   payload: ICreateUser;

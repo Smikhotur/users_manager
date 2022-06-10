@@ -1,5 +1,5 @@
 import axios from 'axios';
-const API_URL = 'https://23.88.43.148';
+const API_URL = 'https://mighty-meadow-56558.herokuapp.com/api';
 
 const client = axios.create({
   baseURL: API_URL,

@@ -6,7 +6,7 @@ import userImg from '../../assets/images/user.png';
 import remove from '../../assets/images/remove.png';
 import { useHistory } from 'react-router-dom';
 import { useAppDispatch } from '../../hooks/redux';
-import { removeUserFeatch } from '../../store/reducers/UserSlice';
+import { removeUserAction } from '../../store/reducers/UserAction';
 
 interface Props {
   users: IUsers[];
@@ -24,12 +24,12 @@ const ListUsers: FC<Props> = ({ users }) => {
       return history.push(`details/${id}`);
     }
 
-    dispatch(removeUserFeatch({ id }));
+    dispatch(removeUserAction(id));
   };
 
   return (
     <S.List>
-      {users.map((user) => (
+      {users.map((user: IUsers) => (
         <S.Item key={user._id}>
           <S.Link
             onClick={(e: React.MouseEvent) => linkDetails(e, user.user_id)}

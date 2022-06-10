@@ -1,8 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { IUser } from '../../models/IUsers';
-
+import { IUsers } from '../../interface';
 export interface UserState {
-  users: IUser[];
+  users: IUsers[];
   user: {};
   isLoading: boolean;
   error: string;
@@ -32,19 +31,19 @@ export const userSlice = createSlice({
       state.isLoading = false;
       state.error = actions.payload;
     },
-    setUserPostFeatch: (state, actions) => {},
-    removeUserFeatch: (state, actions) => {
-      state.message = actions.payload;
+    setUserPostFeatch: (state, actions) => {
+      state.users.push(actions.payload);
+    },
+    removeUser: (state, actions) => {
+      state.users = state.users.filter(
+        (user) => user.user_id !== actions.payload
+      );
     },
     editUserFeatch: (state, actions) => {
       state.user = Object.assign(state.user, actions.payload);
     },
-    getUserFeatch: (state, actions) => {
-      state.isLoading = true;
-    },
     getUserSuccess: (state, actions) => {
       state.user = actions.payload;
-      state.isLoading = false;
     },
   },
 });
@@ -54,9 +53,8 @@ export const {
   getUsersSuccess,
   getUsersFailure,
   setUserPostFeatch,
-  removeUserFeatch,
+  removeUser,
   editUserFeatch,
-  getUserFeatch,
   getUserSuccess,
 } = userSlice.actions;
 export default userSlice.reducer;

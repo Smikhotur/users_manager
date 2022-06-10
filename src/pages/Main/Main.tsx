@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { selectorIsLouder, selectorUsers } from '../../selectors/userSelector';
-import {
-  getUsersFeatch,
-  setUserPostFeatch,
-} from '../../store/reducers/UserSlice';
+import { getUsersFeatch } from '../../store/reducers/UserSlice';
 import { Oval } from 'react-loader-spinner';
 import { S } from './styles';
 import { EColors } from '../../ENUM/Enum';
@@ -13,6 +10,7 @@ import FormikWrapper from '../../components/FornikWrapper/FornikWrapper';
 import { FormAddUser } from '../../components/FormAddUser/FormAddUser';
 import { AddUserSchema } from '../../validations/validationAddUser';
 import { ICreateUser } from '../../interface';
+import { postUserAction } from '../../store/reducers/UserAction';
 
 const Main: React.FC = () => {
   const [openModul, setOpenModul] = useState<boolean>(false);
@@ -31,7 +29,7 @@ const Main: React.FC = () => {
   };
 
   const handleSubmitAddUser = (data: ICreateUser) => {
-    dispatch(setUserPostFeatch(data));
+    dispatch(postUserAction(data));
     setOpenModul(!openModul);
   };
 

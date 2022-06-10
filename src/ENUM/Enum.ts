@@ -1,6 +1,7 @@
 export enum EApi {
-  users = '/users',
-  user = '/user',
+  USERS = '/users',
+  USER = '/user',
+  USER_UPDATE = '/user/update',
 }
 
 export enum EUserPrefix {
